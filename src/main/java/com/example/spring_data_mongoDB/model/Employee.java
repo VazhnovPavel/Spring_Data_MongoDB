@@ -1,19 +1,21 @@
 package com.example.spring_data_mongoDB.model;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
 
 @Data
-@Document(collection = "employee")
+@Entity // Измените аннотацию на JPA аннотацию
 public class Employee {
 
     @Id
-    private String id; // Используем String для id, так как MongoDB использует ObjectId
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String surname;
     private String age;
-
-
 }
